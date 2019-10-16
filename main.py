@@ -19,7 +19,7 @@ def game_start():
                 quit()
 
             if event.type == pygame.KEYUP:
-                if event.key == pygame.K_SPACE:
+                if event.key == pygame.K_RETURN:
                     intro = False
                     game_loop()
 
@@ -29,12 +29,13 @@ def game_start():
 
 
 def game_loop():
+
     # Criando o personagem com o modelo da classe Soldado
     carlinhos = Soldado(
         perX=larguraTela * 0.45,
         perY=alturaTela * 0.8,
-        perW=100,
-        perH=100,
+        perW=103,
+        perH=97,
         perImg=pygame.image.load('Imagens/mario.png')
     )
 
@@ -49,6 +50,9 @@ def game_loop():
     )
     """
     while True:
+
+        tela.fill((0, 0, 0))
+
         # tratamento dos eventos
         for event in pygame.event.get():
             # quit
@@ -56,20 +60,26 @@ def game_loop():
                 pygame.quit()
                 quit()
 
-                # botao foi pressionado
+            # botao foi pressionado
             if event.type == pygame.KEYDOWN:
                 # esquerda
                 if event.key == pygame.K_LEFT:
                     carlinhos.andaEsquerda()
                 # direita
                 elif event.key == pygame.K_RIGHT:
-                    carlinhos.andaEsquerda()
+                    carlinhos.andaDireita()
 
             # botao foi solto
             if event.type == pygame.KEYUP:
                 # esquerda ou direia
                 if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                     carlinhos.stop()
+
+        carlinhos.draw()
+
+        # atualiza a tela
+        pygame.display.update()
+        clock.tick(60)
 
 
 if __name__ == '__main__':

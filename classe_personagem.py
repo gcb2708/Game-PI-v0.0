@@ -28,6 +28,8 @@ class Soldado(object):
         Insirir o código para animação correndo para direita AQUI !!!!!!!!!!!!!
         """
 
+        return True
+
     def andaEsquerda(self):
         self.perX -= self.perVel
 
@@ -38,7 +40,11 @@ class Soldado(object):
         Insirir o código para animação correndo para esquerda AQUI !!!!!!!!!!!!
         """
 
-    def stop(self):
-        self.perX = 0
+        return True
 
-   # def pulo(self):
+    def stop(self):
+        self.perVel = 0
+
+        return True
+
+    # def pulo(self):
