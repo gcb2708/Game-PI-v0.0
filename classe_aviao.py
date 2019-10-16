@@ -1,3 +1,6 @@
+"""
+Arquivo para criação da classe Aviao
+"""
 from auxiliar import tela
 
 

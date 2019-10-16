@@ -1,4 +1,7 @@
-from auxiliar import tela, larguraTela
+"""
+Arquivo para criação da classe Soldado
+"""
+from auxiliar import tela, larguraTela, framesEsquerda, framesDireita, framesPulo
 
 
 class Soldado(object):
@@ -10,7 +13,6 @@ class Soldado(object):
         self.perH = perH
         self.perImg = perImg
         self.perVel = 5
-
         self.perAY = 0
 
     def draw(self):
@@ -22,8 +24,21 @@ class Soldado(object):
         if self.perX > larguraTela - self.perW:
             self.perX = larguraTela - self.perW
 
+        """
+        Insirir o código para animação correndo para direita AQUI !!!!!!!!!!!!!
+        """
+
     def andaEsquerda(self):
         self.perX -= self.perVel
 
         if self.perX < 0:
             self.perX = 0
+
+        """
+        Insirir o código para animação correndo para esquerda AQUI !!!!!!!!!!!!
+        """
+
+    def stop(self):
+        self.perX = 0
+
+   # def pulo(self):
