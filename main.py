@@ -64,18 +64,19 @@ def game_loop():
             if event.type == pygame.KEYDOWN:
                 # esquerda
                 if event.key == pygame.K_LEFT:
-                    carlinhos.andaEsquerda()
+                    carlinhos.perVel = -10
                 # direita
                 elif event.key == pygame.K_RIGHT:
-                    carlinhos.andaDireita()
+                    carlinhos.perVel = 10
 
             # botao foi solto
             if event.type == pygame.KEYUP:
                 # esquerda ou direia
                 if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                    carlinhos.stop()
+                    carlinhos.perVel = 0
 
-        carlinhos.draw()
+        if carlinhos.atualizaX():
+            carlinhos.draw()
 
         # atualiza a tela
         pygame.display.update()

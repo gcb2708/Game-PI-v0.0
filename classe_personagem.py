@@ -7,22 +7,27 @@ from auxiliar import tela, larguraTela, framesEsquerda, framesDireita, framesPul
 class Soldado(object):
 
     def __init__(self, perX, perY, perW, perH, perImg):
-        self.perX = perX
-        self.perY = perY
-        self.perW = perW
-        self.perH = perH
-        self.perImg = perImg
-        self.perVel = 5
-        self.perAY = 0
+        self.perX = perX            # Posição do personagem no eixo X
+        self.perY = perY            # Posição do personagem no eixo Y
+        self.perW = perW            # Largura da imagem do personagem
+        self.perH = perH            # Altura da imagem do personagem
+        self.perImg = perImg        # Imagem do personagem
+        self.perVel = 0             # Velocidade HORIZONTAL do personagem
+        self.perAY = 0              # Aceleração VERTICAL do personagem
 
+    # Desenha na tela
     def draw(self):
         tela.blit(self.perImg, (self.perX, self.perY))
 
-    def andaDireita(self):
+    # Atualiza a posição HORIZONTAL do personagem para direita
+    def atualizaX(self):
         self.perX += self.perVel
 
         if self.perX > larguraTela - self.perW:
             self.perX = larguraTela - self.perW
+
+        elif self.perX < 0:
+            self.perX = 0
 
         """
         Insirir o código para animação correndo para direita AQUI !!!!!!!!!!!!!
@@ -30,21 +35,5 @@ class Soldado(object):
 
         return True
 
-    def andaEsquerda(self):
-        self.perX -= self.perVel
-
-        if self.perX < 0:
-            self.perX = 0
-
-        """
-        Insirir o código para animação correndo para esquerda AQUI !!!!!!!!!!!!
-        """
-
-        return True
-
-    def stop(self):
-        self.perVel = 0
-
-        return True
-
+    # Atualiza a posição VERTICAL do personagem
     # def pulo(self):
