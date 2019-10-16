@@ -1,11 +1,25 @@
 import pygame
 from classe_personagem import Soldado
-from auxiliar import larguraTela, alturaTela, persEsquerda, persDireita
+from auxiliar import larguraTela, alturaTela
 
-carlinhos = Soldado(x=larguraTela*0.45,
-                    y=alturaTela*0.8,
-                    larg= 100,
-                    alt= 100,
-                    img= pygame.image.load('Imagens/mario.png'))
+pygame.init()
 
 
+# def game_start():
+
+def game_loop():
+    # Criando o personagem com o modelo da classe Soldado
+    carlinhos = Soldado(perX=larguraTela * 0.45,
+                        perY=alturaTela * 0.8,
+                        perW=100,
+                        perH=100,
+                        perImg=pygame.image.load('Imagens/mario.png'))
+
+    # Criando o aviao com o modelo da classe Aviao
+
+
+if __name__ == '__main__':
+    game_loop()
+
+    pygame.quit()
+    quit()

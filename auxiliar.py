@@ -10,9 +10,9 @@ tela = pygame.display.set_mode((larguraTela, alturaTela))
 pygame.display.set_caption("Game PI v0.0")
 tempo = pygame.time.Clock()
 
-persEsquerda = []
+framesEsquerda = []
 
-persDireita = []
+framespersDireita = []
 
-persPulo = []
+framesPulo = []
 
