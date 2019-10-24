@@ -32,11 +32,15 @@ def soldado_loop():
     # Criando o personagem com o modelo da classe Soldado
     carlinhos = Soldado(
         perX=larguraTela * 0.2,
-        perY=alturaTela * 0.9,
-        perW=103,
-        perH=97,
-        perImg=pygame.image.load('Imagens/mario.png')
+        perY=alturaTela * 0.8,
+        perW=88,
+        perH=88,
+        perImg=pygame.image.load('Imagens/SoldadoParado/SR1.png')
     )
+
+    left = False
+    right = False
+    teste_dir = 1
 
     while True:
 
@@ -54,12 +58,18 @@ def soldado_loop():
                 # esquerda
                 if event.key == pygame.K_LEFT:
                     carlinhos.perVelX = -5
+                    left = True
+                    right = False
+                    teste_dir = 0
                 # direita
                 elif event.key == pygame.K_RIGHT:
                     carlinhos.perVelX = 5
+                    left = False
+                    right = True
+                    teste_dir = 1
                 # pulo
                 elif event.key == pygame.K_SPACE:
-                    carlinhos.perAY = -1000
+                    carlinhos.perAY = -2000
 
                 # Quando apertada a tecla ESC, alterna para o aviao
                 elif event.key == pygame.K_ESCAPE:
@@ -70,11 +80,13 @@ def soldado_loop():
                 # esquerda ou direia
                 if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                     carlinhos.perVelX = 0
+                    left = False
+                    right = False
                 elif event.key == pygame.K_SPACE:
-                    carlinhos.perAY = 1000
+                    carlinhos.perAY = 2000
 
         if carlinhos.anda():
-            carlinhos.draw()
+            carlinhos.troca_frames(left, right, teste_dir)
 
         if carlinhos.pulo():
             carlinhos.draw()
@@ -90,7 +102,7 @@ def mct_loop():
                      airY=400,
                      airW=128,
                      airH=128,
-                     airImg=pygame.image.load('Imagens/MCT.png'))
+                     airImg=pygame.image.load('Imagens/Aviao/MCT.png'))
 
     while True:
 
@@ -107,16 +119,16 @@ def mct_loop():
             if event.type == pygame.KEYDOWN:
                 # esquerda
                 if event.key == pygame.K_LEFT:
-                    aviao.airAX = -200
+                    aviao.airAX = -50
                 # direita
                 elif event.key == pygame.K_RIGHT:
-                    aviao.airAX = 200
+                    aviao.airAX = 50
                 # cima
                 elif event.key == pygame.K_UP:
-                    aviao.airAY = -200
+                    aviao.airAY = -100
                 # baixo
                 elif event.key == pygame.K_DOWN:
-                    aviao.airAY = 200
+                    aviao.airAY = 100
 
                 # Quando apertada a tecla ESC, alterna para o personagem
                 elif event.key == pygame.K_ESCAPE:

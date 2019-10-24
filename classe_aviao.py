@@ -28,8 +28,12 @@ class Airplane(object):
         self.airVelX += self.airAX * (1 / 60)
 
         # .... travando em uma velocidade máxima .....
-        if self.airVelY >= 98.8:
-            self.airVelY = 98.8
+        if self.airVelX >= 200:
+            self.airVelX = 200
+
+        # .... uma velocidade mínima ....
+        elif self.airVelX <= -200:
+            self.airVelX = -200
 
         # .... e depois atualiza-se a posição HORIZONTAL
         self.airX += self.airVelX * (1 / 60) + ((1 / 2) * self.airAX * (1 / 60) ** 2)
@@ -47,15 +51,19 @@ class Airplane(object):
 
         return True
 
-    # Atualiza a posição VERTICAL do personagem 
+    # Atualiza a posição VERTICAL do personagem
     def atualizaY(self):
 
         # Primeiro calcula-se a velocidade VERTICAL .....
         self.airVelY += self.airAY * (1 / 60)
 
         # .... travando em uma velocidade máxima .....
-        if self.airVelY >= 98.8:
-            self.airVelY = 98.8
+        if self.airVelY >= 200:
+            self.airVelY = 200
+
+        # .... uma velocidade mínima ....
+        elif self.airVelY <= -200:
+            self.airVelY = -200
 
         # .... e depois atualiza-se a posição VERTICAL
         self.airY += self.airVelY * (1 / 60) + ((1 / 2) * self.airAY * (1 / 60) ** 2)

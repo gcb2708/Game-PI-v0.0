@@ -2,7 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a064efb-8d4f-456d-beea-33f7c2f43baa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Imagens/Aviao/MCT.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/OutrasImagens/iconeTela.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoLeft/L00.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoLeft/L01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoLeft/L02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoLeft/L03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoLeft/L04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoLeft/L05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoLeft/L06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoLeft/L07.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoLeft/L08.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoLeft/L09.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoParado/SL1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoParado/SR.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoParado/SR0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoParado/SR1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoRight/R00.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoRight/R01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoRight/R02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoRight/R03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoRight/R04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoRight/R05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoRight/R06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoRight/R07.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoRight/R08.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoRight/R09.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Imagens/MCT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Imagens/icone tela.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Imagens/mario.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auxiliar.py" beforeDir="false" afterPath="$PROJECT_DIR$/auxiliar.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classe_aviao.py" beforeDir="false" afterPath="$PROJECT_DIR$/classe_aviao.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classe_personagem.py" beforeDir="false" afterPath="$PROJECT_DIR$/classe_personagem.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
