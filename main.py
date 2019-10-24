@@ -41,6 +41,7 @@ def soldado_loop():
     left = False
     right = False
     teste_dir = 1
+    teste_pulo = 0
 
     while True:
 
@@ -61,15 +62,18 @@ def soldado_loop():
                     left = True
                     right = False
                     teste_dir = 0
+                    teste_pulo = 0
                 # direita
                 elif event.key == pygame.K_RIGHT:
                     carlinhos.perVelX = 5
                     left = False
                     right = True
                     teste_dir = 1
+                    teste_pulo = 0
                 # pulo
                 elif event.key == pygame.K_SPACE:
                     carlinhos.perAY = -2000
+                    teste_pulo = 1
 
                 # Quando apertada a tecla ESC, alterna para o aviao
                 elif event.key == pygame.K_ESCAPE:
@@ -85,11 +89,13 @@ def soldado_loop():
                 elif event.key == pygame.K_SPACE:
                     carlinhos.perAY = 2000
 
-        if carlinhos.anda():
-            carlinhos.troca_frames(left, right, teste_dir)
+        if teste_pulo == 0:
+            if carlinhos.anda():
+                carlinhos.troca_frames(left, right, teste_dir)
 
-        # if carlinhos.pulo():
-        #    carlinhos.draw()
+        elif teste_pulo == 1:
+            if carlinhos.pulo():
+                carlinhos.draw()
 
         # atualiza a tela
         pygame.display.update()

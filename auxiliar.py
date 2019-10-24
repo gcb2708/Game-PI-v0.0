@@ -41,6 +41,13 @@ framesDireita = [pygame.image.load('Imagens/SoldadoRight/R00.png'),
 framesParado = [pygame.image.load('Imagens/SoldadoParado/SL1.png'),
                 pygame.image.load('Imagens/SoldadoParado/SR1.png')]
 
+# Lista com os frames para a animação quando o personagem estiver PULANDO
+framesPulo = [pygame.image.load('Imagens/SoldadoPulando/P00.png'),
+              pygame.image.load('Imagens/SoldadoPulando/P01.png'),
+              pygame.image.load('Imagens/SoldadoPulando/P02.png'),
+              pygame.image.load('Imagens/SoldadoPulando/P03.png'),
+              pygame.image.load('Imagens/SoldadoPulando/P04.png'),
+              pygame.image.load('Imagens/SoldadoPulando/P05.png')]
 
 # renderiza o texto
 def text_objects(text, font, color):

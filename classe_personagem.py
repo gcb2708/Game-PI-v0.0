@@ -2,7 +2,7 @@
 Arquivo para criação da classe Soldado
 """
 import pygame
-from auxiliar import tela, larguraTela, alturaTela, framesEsquerda, framesDireita, framesParado
+from auxiliar import tela, larguraTela, alturaTela, framesEsquerda, framesDireita, framesParado, framesPulo
 
 
 class Soldado(object):
@@ -16,11 +16,18 @@ class Soldado(object):
         self.perVelX = 0            # Velocidade HORIZONTAL do personagem
         self.perVelY = 0            # Velocidade VERTICAL do personagem
         self.perAY = 0              # Aceleração VERTICAL do personagem
-        self.walkCount = 0          # Contador para animação
+        self.walkCount = 0          # Contador para animação de andar
+        self.jumpCount = 0          # Contador para animação do pulo
 
     # Desenha na tela
-    def draw(self, teste_dir):
-        tela.blit(self.perImg, (self.perX, self.perY))
+    def draw(self):
+        if self.jumpCount + 1 >= 36:
+            self.jumpCount = 0
+
+        self.jumpCount += 1
+
+        tela.blit(framesPulo[self.jumpCount // 6], (self.perX, self.perY))
+        pygame.display.update()
 
     # Atualiza a posição HORIZONTAL do personagem
     def anda(self):
