@@ -31,8 +31,8 @@ def game_start():
 def soldado_loop():
     # Criando o personagem com o modelo da classe Soldado
     carlinhos = Soldado(
-        perX=larguraTela * 0.45,
-        perY=alturaTela * 0.8,
+        perX=larguraTela * 0.2,
+        perY=alturaTela * 0.9,
         perW=103,
         perH=97,
         perImg=pygame.image.load('Imagens/mario.png')
@@ -53,10 +53,14 @@ def soldado_loop():
             if event.type == pygame.KEYDOWN:
                 # esquerda
                 if event.key == pygame.K_LEFT:
-                    carlinhos.perVel = -10
+                    carlinhos.perVelX = -5
                 # direita
                 elif event.key == pygame.K_RIGHT:
-                    carlinhos.perVel = 10
+                    carlinhos.perVelX = 5
+                # pulo
+                elif event.key == pygame.K_SPACE:
+                    carlinhos.perAY = -12
+
                 # Quando apertada a tecla ESC, alterna para o aviao
                 elif event.key == pygame.K_ESCAPE:
                     mct_loop()
@@ -65,9 +69,14 @@ def soldado_loop():
             if event.type == pygame.KEYUP:
                 # esquerda ou direia
                 if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                    carlinhos.perVel = 0
+                    carlinhos.perVelX = 0
+                elif event.key == pygame.K_SPACE:
+                    carlinhos.perAY = 12
 
-        if carlinhos.atualizaX():
+        if carlinhos.anda():
+            carlinhos.draw()
+
+        if carlinhos.pulo():
             carlinhos.draw()
 
         # atualiza a tela
@@ -108,6 +117,7 @@ def mct_loop():
                 # baixo
                 elif event.key == pygame.K_DOWN:
                     aviao.airAY = 2
+
                 # Quando apertada a tecla ESC, alterna para o personagem
                 elif event.key == pygame.K_ESCAPE:
                     soldado_loop()
