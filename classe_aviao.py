@@ -38,9 +38,7 @@ class Airplane(object):
         # .... e depois atualiza-se a posição HORIZONTAL
         self.airX += self.airVelX * (1 / 60) + ((1 / 2) * self.airAX * (1 / 60) ** 2)
 
-        """
-        O bloco de código a seguir trava o objeto na tela
-        """
+        # O bloco de código a seguir trava o aviao na largura na tela
         if self.airX > larguraTela - self.airW:
             self.airX = larguraTela - self.airW
             self.airVelX = 0
@@ -68,9 +66,7 @@ class Airplane(object):
         # .... e depois atualiza-se a posição VERTICAL
         self.airY += self.airVelY * (1 / 60) + ((1 / 2) * self.airAY * (1 / 60) ** 2)
 
-        """
-        O bloco de código a seguir trava o objeto na tela
-        """
+        # O bloco de código a seguir trava o aviao na altura na tela
         if self.airY > alturaTela - self.airH:
             self.airY = alturaTela - self.airH
             self.airVelY = 0

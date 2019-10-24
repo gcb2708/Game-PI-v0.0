@@ -32,7 +32,7 @@ def soldado_loop():
     # Criando o personagem com o modelo da classe Soldado
     carlinhos = Soldado(
         perX=larguraTela * 0.2,
-        perY=alturaTela * 0.8,
+        perY=alturaTela * 0.85,
         perW=88,
         perH=88,
         perImg=pygame.image.load('Imagens/SoldadoParado/SR1.png')
@@ -88,8 +88,8 @@ def soldado_loop():
         if carlinhos.anda():
             carlinhos.troca_frames(left, right, teste_dir)
 
-        if carlinhos.pulo():
-            carlinhos.draw()
+        # if carlinhos.pulo():
+        #    carlinhos.draw()
 
         # atualiza a tela
         pygame.display.update()

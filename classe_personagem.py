@@ -24,8 +24,10 @@ class Soldado(object):
 
     # Atualiza a posição HORIZONTAL do personagem
     def anda(self):
+        # Equação do MRU descrito pelo personagem no plano HORIZONTAL
         self.perX += self.perVelX
 
+        # Trava o personagem na largura da tela
         if self.perX > larguraTela - self.perW:
             self.perX = larguraTela - self.perW
 
@@ -37,7 +39,7 @@ class Soldado(object):
     # Atualiza a posição VERTICAL do personagem
     def pulo(self):
 
-        # Primeiro calcula-se a velocidade VERTICAL .....
+        # Primeiro calcula-se a velocidade do MRUV da VERTICAL .....
         self.perVelY += self.perAY * (1 / 60)
 
         # .... depois atualiza-se a posição VERTICAL ....
@@ -48,9 +50,7 @@ class Soldado(object):
             self.perY = 250
             self.perVelY = 0
 
-        """
-        O bloco de código a seguir trava o objeto na tela
-        """
+        # Trava o personagem na altura da tela
         if self.perY > alturaTela - self.perH:
             self.perY = alturaTela - self.perH
             self.perVelY = 0
@@ -61,21 +61,31 @@ class Soldado(object):
 
         return True
 
+    # Atualiza os frames quando o personagem anda para esquerda ou direita
     def troca_frames(self, left, right, teste_dir):
 
         tela.fill((0, 0, 0))
 
+        # Limita o contado para permenecer em LOOP
         if self.walkCount + 1 >= 30:
             self.walkCount = 0
 
+        # Se é verdade que o personagem se move para ESQUERDA,
+        # então a lista com os frames da animação é percorrida.
         if left:
             tela.blit(framesEsquerda[self.walkCount // 3], (self.perX, self.perY))
             self.walkCount += 1
 
+        # Se é verdade que o personagem se move para DIREITA,
+        # então a lista com os frames da animação é percorrida.
         elif right:
             tela.blit(framesDireita[self.walkCount // 3], (self.perX, self.perY))
             self.walkCount += 1
 
+        # Se o persoganem está parado, então percorre-se uma lista com
+        # os frames dessa situação.
+        # - Quando teste_dir == 0, personagem fica parado virado pra ESQUERDA
+        # - Quando teste_dir == 0, personagem fica parado virado pra DIREITA
         else:
             if teste_dir == 0 or teste_dir == 1:
                 tela.blit(framesParado[teste_dir], (self.perX, self.perY))

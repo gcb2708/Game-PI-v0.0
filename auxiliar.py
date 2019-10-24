@@ -3,14 +3,17 @@ Arquivo para definir questões auxiliares
 """
 import pygame
 
+# Definições gerais da tela do game
 larguraTela = 800
 alturaTela = 600
-
 tela = pygame.display.set_mode((larguraTela, alturaTela))
 pygame.display.set_caption("Soldado Carlinhos")
 pygame.display.set_icon(pygame.image.load('Imagens/OutrasImagens/iconeTela.png'))
+
+# "Relógio" do game
 clock = pygame.time.Clock()
 
+# Lista com os frames para a animação quando o personagem anda para ESQUERDA
 framesEsquerda = [pygame.image.load('Imagens/SoldadoLeft/L00.png'),
                   pygame.image.load('Imagens/SoldadoLeft/L01.png'),
                   pygame.image.load('Imagens/SoldadoLeft/L02.png'),
@@ -22,6 +25,7 @@ framesEsquerda = [pygame.image.load('Imagens/SoldadoLeft/L00.png'),
                   pygame.image.load('Imagens/SoldadoLeft/L08.png'),
                   pygame.image.load('Imagens/SoldadoLeft/L09.png')]
 
+# Lista com os frames para a animação quando o personagem anda para DIREITA
 framesDireita = [pygame.image.load('Imagens/SoldadoRight/R00.png'),
                  pygame.image.load('Imagens/SoldadoRight/R01.png'),
                  pygame.image.load('Imagens/SoldadoRight/R02.png'),
@@ -33,6 +37,7 @@ framesDireita = [pygame.image.load('Imagens/SoldadoRight/R00.png'),
                  pygame.image.load('Imagens/SoldadoRight/R08.png'),
                  pygame.image.load('Imagens/SoldadoRight/R09.png')]
 
+# Lista com os frames para a animação quando o personagem estiver PARADO
 framesParado = [pygame.image.load('Imagens/SoldadoParado/SL1.png'),
                 pygame.image.load('Imagens/SoldadoParado/SR1.png')]
 
