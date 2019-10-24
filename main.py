@@ -24,7 +24,7 @@ def game_start():
                     soldado_loop()
 
         tela.fill((255, 255, 255))
-        display_message("Press Start", (255, 0, 255))
+        display_message("Press Enter", (255, 0, 255))
         clock.tick(15)
 
 
@@ -59,7 +59,7 @@ def soldado_loop():
                     carlinhos.perVelX = 5
                 # pulo
                 elif event.key == pygame.K_SPACE:
-                    carlinhos.perAY = -12
+                    carlinhos.perAY = -1000
 
                 # Quando apertada a tecla ESC, alterna para o aviao
                 elif event.key == pygame.K_ESCAPE:
@@ -71,7 +71,7 @@ def soldado_loop():
                 if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                     carlinhos.perVelX = 0
                 elif event.key == pygame.K_SPACE:
-                    carlinhos.perAY = 12
+                    carlinhos.perAY = 1000
 
         if carlinhos.anda():
             carlinhos.draw()
@@ -107,16 +107,16 @@ def mct_loop():
             if event.type == pygame.KEYDOWN:
                 # esquerda
                 if event.key == pygame.K_LEFT:
-                    aviao.airAX = -2
+                    aviao.airAX = -200
                 # direita
                 elif event.key == pygame.K_RIGHT:
-                    aviao.airAX = 2
+                    aviao.airAX = 200
                 # cima
                 elif event.key == pygame.K_UP:
-                    aviao.airAY = -2
+                    aviao.airAY = -200
                 # baixo
                 elif event.key == pygame.K_DOWN:
-                    aviao.airAY = 2
+                    aviao.airAY = 200
 
                 # Quando apertada a tecla ESC, alterna para o personagem
                 elif event.key == pygame.K_ESCAPE:

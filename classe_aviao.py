@@ -32,7 +32,7 @@ class Airplane(object):
             self.airVelY = 98.8
 
         # .... e depois atualiza-se a posição HORIZONTAL
-        self.airX += self.airVelX + ((1 / 2) * self.airAX * (1 / 60) ** 2)
+        self.airX += self.airVelX * (1 / 60) + ((1 / 2) * self.airAX * (1 / 60) ** 2)
 
         """
         O bloco de código a seguir trava o objeto na tela
@@ -47,7 +47,7 @@ class Airplane(object):
 
         return True
 
-    # Atualiza a posição VERTICAL do personagem
+    # Atualiza a posição VERTICAL do personagem 
     def atualizaY(self):
 
         # Primeiro calcula-se a velocidade VERTICAL .....
@@ -58,7 +58,7 @@ class Airplane(object):
             self.airVelY = 98.8
 
         # .... e depois atualiza-se a posição VERTICAL
-        self.airY += self.airVelY + ((1 / 2) * self.airAY * (1 / 60) ** 2)
+        self.airY += self.airVelY * (1 / 60) + ((1 / 2) * self.airAY * (1 / 60) ** 2)
 
         """
         O bloco de código a seguir trava o objeto na tela

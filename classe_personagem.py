@@ -38,12 +38,8 @@ class Soldado(object):
         # Primeiro calcula-se a velocidade VERTICAL .....
         self.perVelY += self.perAY * (1 / 60)
 
-        # .... travando em uma velocidade máxima .....
-        if self.perVelY >= 98.8:
-            self.perVelY = 98.8
-
         # .... depois atualiza-se a posição VERTICAL ....
-        self.perY += self.perVelY + ((1 / 2) * self.perAY * (1 / 60) ** 2)
+        self.perY += self.perVelY * (1 / 60) + ((1 / 2) * self.perAY * (1 / 60) ** 2)
 
         # .... e por fim trava numa altura máxima
         if self.perY <= 250:
