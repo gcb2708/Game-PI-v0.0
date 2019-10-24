@@ -57,9 +57,9 @@ def soldado_loop():
                 # direita
                 elif event.key == pygame.K_RIGHT:
                     carlinhos.perVel = 10
+                # Quando apertada a tecla ESC, alterna para o aviao
                 elif event.key == pygame.K_ESCAPE:
-                    if event.key == pygame.K_SPACE:
-                        mct_loop()
+                    mct_loop()
 
             # botao foi solto
             if event.type == pygame.KEYUP:
@@ -77,8 +77,8 @@ def soldado_loop():
 
 def mct_loop():
     # Criando o avião com o modelo da classe Airplane
-    aviao = Airplane(airX=128,
-                     airY=128,
+    aviao = Airplane(airX=50,
+                     airY=400,
                      airW=128,
                      airH=128,
                      airImg=pygame.image.load('Imagens/MCT.png'))
@@ -98,18 +98,33 @@ def mct_loop():
             if event.type == pygame.KEYDOWN:
                 # esquerda
                 if event.key == pygame.K_LEFT:
-                    aviao.airVel = -10
+                    aviao.airAX = -2
                 # direita
                 elif event.key == pygame.K_RIGHT:
-                    aviao.airVel = 10
+                    aviao.airAX = 2
+                # cima
+                elif event.key == pygame.K_UP:
+                    aviao.airAY = -2
+                # baixo
+                elif event.key == pygame.K_DOWN:
+                    aviao.airAY = 2
+                # Quando apertada a tecla ESC, alterna para o personagem
+                elif event.key == pygame.K_ESCAPE:
+                    soldado_loop()
 
             # botao foi solto
             if event.type == pygame.KEYUP:
-                # esquerda ou direia
+                # HORIZONTAL
                 if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                    aviao.airVel = 0
+                    aviao.airAX = 0
+                # VERTICAL
+                elif event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+                    aviao.airAY = 0
 
         if aviao.atualizaX():
+            aviao.draw()
+
+        if aviao.atualizaY():
             aviao.draw()
 
         # atualiza a tela

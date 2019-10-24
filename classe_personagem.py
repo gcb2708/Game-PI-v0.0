@@ -29,10 +29,6 @@ class Soldado(object):
         elif self.perX < 0:
             self.perX = 0
 
-        """
-        Insirir o código para animação correndo para direita AQUI !!!!!!!!!!!!!
-        """
-
         return True
 
     # Atualiza a posição VERTICAL do personagem
