@@ -3,8 +3,8 @@ Arquivo principal do jogo
 """
 import pygame
 from classe_personagem import Soldado
-from classe_aviao import Aviao
-from auxiliar import tela, larguraTela, alturaTela, text_objects, display_message, clock
+from classe_aviao import Airplane
+from auxiliar import tela, larguraTela, alturaTela, display_message, clock
 
 pygame.init()
 
@@ -21,15 +21,14 @@ def game_start():
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_RETURN:
                     intro = False
-                    game_loop()
+                    soldado_loop()
 
         tela.fill((255, 255, 255))
         display_message("Press Start", (255, 0, 255))
         clock.tick(15)
 
 
-def game_loop():
-
+def soldado_loop():
     # Criando o personagem com o modelo da classe Soldado
     carlinhos = Soldado(
         perX=larguraTela * 0.45,
@@ -39,16 +38,6 @@ def game_loop():
         perImg=pygame.image.load('Imagens/mario.png')
     )
 
-    """
-    # Criando o aviao com o modelo da classe Aviao
-    aviao = Aviao(
-        airX=larguraTela * 0.1,
-        airY=alturaTela * 0.2,
-        airW=100,
-        airH=100,
-        airImg=pygame.image.load('Imagens/MCT.png')
-    )
-    """
     while True:
 
         tela.fill((0, 0, 0))
@@ -68,6 +57,9 @@ def game_loop():
                 # direita
                 elif event.key == pygame.K_RIGHT:
                     carlinhos.perVel = 10
+                elif event.key == pygame.K_ESCAPE:
+                    if event.key == pygame.K_SPACE:
+                        mct_loop()
 
             # botao foi solto
             if event.type == pygame.KEYUP:
@@ -81,6 +73,18 @@ def game_loop():
         # atualiza a tela
         pygame.display.update()
         clock.tick(60)
+
+
+def mct_loop():
+    # Criando o avião com o modelo da classe Airplane
+    aviao = Airplane(airX=128,
+                     airY=128,
+                     airW=128,
+                     airH=128,
+                     airImg=pygame.image.load('Imagens/MCT.png'))
+
+    while True:
+        tela.fill((0, 0, 0))
 
 
 if __name__ == '__main__':

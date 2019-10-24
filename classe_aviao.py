@@ -4,7 +4,7 @@ Arquivo para criação da classe Aviao
 from auxiliar import tela
 
 
-class Aviao(object):
+class Airplane(object):
 
     def __init__(self, airX, airY, airW, airH, airImg):
         self.airX = airX            # Posição do avião no eixo X
