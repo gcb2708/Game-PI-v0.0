@@ -84,7 +84,37 @@ def mct_loop():
                      airImg=pygame.image.load('Imagens/MCT.png'))
 
     while True:
+
         tela.fill((0, 0, 0))
+
+        # tratamento dos eventos
+        for event in pygame.event.get():
+            # quit
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+
+            # botao foi pressionado
+            if event.type == pygame.KEYDOWN:
+                # esquerda
+                if event.key == pygame.K_LEFT:
+                    aviao.airVel = -10
+                # direita
+                elif event.key == pygame.K_RIGHT:
+                    aviao.airVel = 10
+
+            # botao foi solto
+            if event.type == pygame.KEYUP:
+                # esquerda ou direia
+                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                    aviao.airVel = 0
+
+        if aviao.atualizaX():
+            aviao.draw()
+
+        # atualiza a tela
+        pygame.display.update()
+        clock.tick(60)
 
 
 if __name__ == '__main__':

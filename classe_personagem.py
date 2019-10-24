@@ -19,7 +19,7 @@ class Soldado(object):
     def draw(self):
         tela.blit(self.perImg, (self.perX, self.perY))
 
-    # Atualiza a posição HORIZONTAL do personagem para direita
+    # Atualiza a posição HORIZONTAL do personagem
     def atualizaX(self):
         self.perX += self.perVel
 
