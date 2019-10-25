@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a064efb-8d4f-456d-beea-33f7c2f43baa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoPuloE/P00E.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoPuloE/P01E.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoPuloE/P02E.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoPuloE/P03E.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoPuloE/P04E.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Imagens/SoldadoPuloE/P05E.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auxiliar.py" beforeDir="false" afterPath="$PROJECT_DIR$/auxiliar.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classe_personagem.py" beforeDir="false" afterPath="$PROJECT_DIR$/classe_personagem.py" afterDir="false" />

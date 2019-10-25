@@ -2,7 +2,7 @@
 Arquivo para criação da classe Soldado
 """
 import pygame
-from auxiliar import tela, larguraTela, alturaTela, framesEsquerda, framesDireita, framesParado, framesPulo
+from auxiliar import tela, larguraTela, alturaTela, framesEsquerda, framesDireita, framesParado, framesPulo, framesPuloE
 
 
 class Soldado(object):
@@ -18,16 +18,6 @@ class Soldado(object):
         self.perAY = 0              # Aceleração VERTICAL do personagem
         self.walkCount = 0          # Contador para animação de andar
         self.jumpCount = 0          # Contador para animação do pulo
-
-    # Desenha na tela
-    def draw(self):
-        if self.jumpCount + 1 >= 36:
-            self.jumpCount = 0
-
-        self.jumpCount += 1
-
-        tela.blit(framesPulo[self.jumpCount // 6], (self.perX, self.perY))
-        pygame.display.update()
 
     # Atualiza a posição HORIZONTAL do personagem
     def anda(self):
@@ -68,31 +58,56 @@ class Soldado(object):
 
         return True
 
-    # Atualiza os frames quando o personagem anda para esquerda ou direita
-    def troca_frames(self, left, right, teste_dir):
-
-        tela.fill((0, 0, 0))
-
-        # Limita o contado para permenecer em LOOP
-        if self.walkCount + 1 >= 30:
+    # trocar os frames do personagem
+    def troca_frames(self, esquerda, direita, teste_dir, teste_pulo):
+        # contador
+        if self.walkCount + 1 >= 18:
             self.walkCount = 0
 
-        # Se é verdade que o personagem se move para ESQUERDA,
-        # então a lista com os frames da animação é percorrida.
-        if left:
-            tela.blit(framesEsquerda[self.walkCount // 3], (self.perX, self.perY))
-            self.walkCount += 1
+        if self.jumpCount + 1 >= 36:
+            self.jumpCount = 0
 
-        # Se é verdade que o personagem se move para DIREITA,
-        # então a lista com os frames da animação é percorrida.
-        elif right:
-            tela.blit(framesDireita[self.walkCount // 3], (self.perX, self.perY))
-            self.walkCount += 1
+        # varifica a posição do personagem no eixo Y
+        if self.perY >= alturaTela - self.perW:
+            teste_pulo = False
 
-        # Se o persoganem está parado, então percorre-se uma lista com
-        # os frames dessa situação.
-        # - Quando teste_dir == 0, personagem fica parado virado pra ESQUERDA
-        # - Quando teste_dir == 0, personagem fica parado virado pra DIREITA
+        # o personagem está pulando
+        if teste_pulo:
+            if esquerda:
+                tela.blit(framesPuloE[self.jumpCount // 6], (self.perX, self.perY))
+                self.jumpCount += 1
+
+            elif direita:
+                tela.blit(framesPulo[self.jumpCount // 6], (self.perX, self.perY))
+                self.jumpCount += 1
+
+            # o personagem so tem momento no eixo Y
+            else:
+                # teste da direção anterior
+                if teste_dir == 0:
+                    tela.blit(framesPuloE[self.jumpCount // 6], (self.perX, self.perY))
+                    self.jumpCount += 1
+
+                else:
+                    tela.blit(framesPulo[self.jumpCount // 6], (self.perX, self.perY))
+                    self.jumpCount += 1
+
+        # o personagem não está pulando
+        elif not teste_pulo:
+            if esquerda:
+                tela.blit(framesEsquerda[self.walkCount // 3], (self.perX, self.perY))
+                self.walkCount += 1
+
+            elif direita:
+                tela.blit(framesDireita[self.walkCount // 3], (self.perX, self.perY))
+                self.walkCount += 1
+
+            else:
+                if teste_dir == 0 or teste_dir == 1:
+                    tela.blit(framesParado[teste_dir], (self.perX, self.perY))
+                    self.walkCount = 0
+
+        # personagem parado
         else:
             if teste_dir == 0 or teste_dir == 1:
                 tela.blit(framesParado[teste_dir], (self.perX, self.perY))
