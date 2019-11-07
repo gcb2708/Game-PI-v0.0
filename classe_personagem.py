@@ -2,7 +2,8 @@
 Arquivo para criação da classe Soldado
 """
 import pygame
-from auxiliar import tela, larguraTela, alturaTela, framesEsquerda, framesDireita, framesParado, framesPulo, framesPuloE
+from auxiliar import tela, larguraTela, alturaTela, framesEsquerda, framesDireita, framesParado, framesPulo, \
+    framesPuloE
 
 
 class Soldado(object):
@@ -15,14 +16,26 @@ class Soldado(object):
         self.perImg = perImg        # Imagem do personagem
         self.perVelX = 0            # Velocidade HORIZONTAL do personagem
         self.perVelY = 0            # Velocidade VERTICAL do personagem
-        self.perAY = 0              # Aceleração VERTICAL do personagem
+        self.perAY = 445.73         # Aceleração VERTICAL do personagem
         self.walkCount = 0          # Contador para animação de andar
         self.jumpCount = 0          # Contador para animação do pulo
+        self.teste_boost = 0        # Teste pro boost
 
     # Atualiza a posição HORIZONTAL do personagem
-    def anda(self):
+    def anda(self, boost):
+
+        # Verifica a posição do personagem no eixo Y
+        if self.perY < alturaTela - self.perW:
+            boost = 0
+
         # Equação do MRU descrito pelo personagem no plano HORIZONTAL
-        self.perX += self.perVelX
+        self.perX += (self.perVelX + boost) * (1/60)
+
+        # verificar se existe boost
+        if boost != 0:
+            self.teste_boost = -1
+        else:
+            self.teste_boost = 0
 
         # Trava o personagem na largura da tela
         if self.perX > larguraTela - self.perW:
@@ -39,13 +52,14 @@ class Soldado(object):
         # Primeiro calcula-se a velocidade do MRUV da VERTICAL .....
         self.perVelY += self.perAY * (1 / 60)
 
-        # .... depois atualiza-se a posição VERTICAL ....
+        # .... depois atualiza-se a posição VERTICAL
         self.perY += self.perVelY * (1 / 60) + ((1 / 2) * self.perAY * (1 / 60) ** 2)
 
         # .... e por fim trava numa altura máxima
-        if self.perY <= 250:
-            self.perY = 250
-            self.perVelY = 0
+        # if self.perY <= 250:
+        #    self.perY = 250
+        #    self.perVelY = 0
+        #   self.perAY = 2000
 
         # Trava o personagem na altura da tela
         if self.perY > alturaTela - self.perH:
@@ -95,11 +109,11 @@ class Soldado(object):
         # o personagem não está pulando
         elif not teste_pulo:
             if esquerda:
-                tela.blit(framesEsquerda[self.walkCount // 3], (self.perX, self.perY))
+                tela.blit(framesEsquerda[self.walkCount // (4 + self.teste_boost)], (self.perX, self.perY))
                 self.walkCount += 1
 
             elif direita:
-                tela.blit(framesDireita[self.walkCount // 3], (self.perX, self.perY))
+                tela.blit(framesDireita[self.walkCount // (4 + self.teste_boost)], (self.perX, self.perY))
                 self.walkCount += 1
 
             else:

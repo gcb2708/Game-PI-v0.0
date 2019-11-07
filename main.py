@@ -42,6 +42,7 @@ def soldado_loop():
     right = False
     teste_dir = 1
     teste_pulo = False
+    boost = 0
 
     while True:
 
@@ -58,20 +59,27 @@ def soldado_loop():
             if event.type == pygame.KEYDOWN:
                 # esquerda
                 if event.key == pygame.K_LEFT:
-                    carlinhos.perVelX = -5
+                    carlinhos.perVelX = -272.72
                     left = True
                     right = False
                     teste_dir = 0
                 # direita
                 elif event.key == pygame.K_RIGHT:
-                    carlinhos.perVelX = 5
+                    carlinhos.perVelX = 272.72
                     left = False
                     right = True
                     teste_dir = 1
                 # pulo
                 elif event.key == pygame.K_SPACE:
-                    carlinhos.perAY = -2000
-                    teste_pulo = True
+                    if carlinhos.perY >= alturaTela - carlinhos.perH:
+                        carlinhos.perVelY = -300
+                        teste_pulo = True
+
+                elif event.key == pygame.K_LSHIFT:
+                    if left:
+                        boost = -100
+                    elif right:
+                        boost = 100
 
                 # Quando apertada a tecla ESC, alterna para o aviao
                 elif event.key == pygame.K_ESCAPE:
@@ -84,12 +92,13 @@ def soldado_loop():
                     carlinhos.perVelX = 0
                     left = False
                     right = False
-                elif event.key == pygame.K_SPACE:
-                    carlinhos.perAY = 2000
+
+                if event.key == pygame.K_LSHIFT:
+                    boost = 0
 
         carlinhos.pulo()
 
-        if carlinhos.anda():
+        if carlinhos.anda(boost):
             carlinhos.troca_frames(left, right, teste_dir, teste_pulo)
 
         # atualiza a tela
@@ -99,8 +108,8 @@ def soldado_loop():
 
 def mct_loop():
     # Criando o avião com o modelo da classe Airplane
-    aviao = Airplane(airX=50,
-                     airY=400,
+    aviao = Airplane(airX=0,
+                     airY=alturaTela-128,
                      airW=128,
                      airH=128,
                      airImg=pygame.image.load('Imagens/Aviao/MCT.png'))
@@ -149,6 +158,9 @@ def mct_loop():
 
         if aviao.atualizaY():
             aviao.draw()
+
+        if aviao.combustivel():
+            game_start()
 
         # atualiza a tela
         pygame.display.update()

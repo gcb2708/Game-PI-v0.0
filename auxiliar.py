@@ -57,6 +57,9 @@ framesPuloE = [pygame.image.load('Imagens/SoldadoPuloE/P00E.png'),
                pygame.image.load('Imagens/SoldadoPuloE/P04E.png'),
                pygame.image.load('Imagens/SoldadoPuloE/P05E.png')]
 
+# Aceleração da gravidade
+# gravity = 988
+
 
 # renderiza o texto
 def text_objects(text, font, color):
@@ -66,10 +69,20 @@ def text_objects(text, font, color):
 
 # apresenta texto na tela
 def display_message(text, color):
-    largeText = pygame.font.Font('freesansbold.ttf', 115)
+    largeText = pygame.font.Font('freesansbold.ttf', 75)
 
     TextSurf, TextRect = text_objects(text, largeText, color)
     TextRect.center = (larguraTela / 2, alturaTela / 2)
+
+    tela.blit(TextSurf, TextRect)
+    pygame.display.update()
+
+
+def fuel_message(text, color):
+    largeText = pygame.font.Font('freesansbold.ttf', 15)
+
+    TextSurf, TextRect = text_objects(text, largeText, color)
+    TextRect.center = (90, 20)
 
     tela.blit(TextSurf, TextRect)
     pygame.display.update()
